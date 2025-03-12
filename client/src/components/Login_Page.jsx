@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -21,48 +22,57 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-400 to-indigo-600">
-      <div className="bg-white p-8 rounded-xl shadow-2xl w-96">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      minHeight: "100vh",
+      background: "linear-gradient(to bottom right, #8b5cf6, #4f46e5)",
+      padding: "1.5rem"
+    }}>
+      <div className="bg-white bg-opacity-30 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center text-white mb-6">Welcome Back</h2>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-gray-700 font-medium">Email</label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="relative">
+            <FaEnvelope className="absolute left-3 top-4 text-gray-500" />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 p-3 border rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+              placeholder="Email"
               required
             />
           </div>
 
-          <div>
-            <label className="block text-gray-700 font-medium">Password</label>
+          <div className="relative">
+            <FaLock className="absolute left-3 top-4 text-gray-500" />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 p-3 border rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+              placeholder="Password"
               required
             />
           </div>
 
           <button 
             type="submit" 
-            className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+            className="w-full bg-purple-500 text-white py-3 rounded-lg font-semibold hover:bg-purple-600 transition duration-300 shadow-md"
           >
             Login
           </button>
         </form>
 
-        <p className="text-center text-gray-600 mt-4">
+        <p className="text-center text-white mt-4">
           Don't have an account?{" "}
           <button 
-            onClick={() => navigate("/sign-up")}
-            className="text-blue-500 font-semibold hover:underline"
+            onClick={() => navigate("/signup")}
+            className="text-purple-300 font-semibold hover:underline"
           >
             Sign Up
           </button>
