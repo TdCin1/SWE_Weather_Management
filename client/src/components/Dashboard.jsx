@@ -10,11 +10,23 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <h1 className="text-3xl mb-4">Welcome to Dashboard</h1>
-      <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">
-        Logout
-      </button>
+    <div className="container text-center mt-5">
+      <h1 className="display-4">Weather Dashboard</h1>
+      <div className="row">
+        <div className="col-md-4 bg-warning p-3 text-white">
+          <h2>Sunny</h2>
+          <p>75°F</p>
+        </div>
+        <div className="col-md-4 bg-secondary p-3 text-white">
+          <h2>Cloudy</h2>
+          <p>68°F</p>
+        </div>
+        <div className="col-md-4 bg-primary p-3 text-white">
+          <h2>Rainy</h2>
+          <p>60°F</p>
+        </div>
+      </div>
+      <button className="btn btn-danger mt-3">Logout</button>
     </div>
   );
 };
