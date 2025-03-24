@@ -30,31 +30,31 @@ const LoginPage = () => {
       background: "linear-gradient(to bottom right, #8b5cf6, #4f46e5)",
       padding: "1.5rem"
     }}>
-      <div className="bg-white bg-opacity-30 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-white mb-6">Welcome Back</h2>
+      <div className="bg-white bg-opacity-50 backdrop-blur-lg p-6 rounded-4 shadow-lg w-100" style={{ maxWidth: '400px' }}>
+        <h2 className="text-3xl font-bold text-center text-white mb-4">Welcome Back</h2>
 
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {error && <p className="text-danger text-center mb-4">{error}</p>}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="relative">
-            <FaEnvelope className="absolute left-3 top-4 text-gray-500" />
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4 position-relative">
+            <FaEnvelope className="position-absolute top-50 translate-middle-y text-muted" style={{ left: '12px' }} />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-10 p-3 border rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="form-control ps-5 py-3 border-2 border-purple-500 rounded-3 bg-white bg-opacity-75 text-dark shadow-sm focus:ring-2 focus:ring-purple-500"
               placeholder="Email"
               required
             />
           </div>
 
-          <div className="relative">
-            <FaLock className="absolute left-3 top-4 text-gray-500" />
+          <div className="mb-4 position-relative">
+            <FaLock className="position-absolute top-50 translate-middle-y text-muted" style={{ left: '12px' }} />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full pl-10 p-3 border rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="form-control ps-5 py-3 border-2 border-purple-500 rounded-3 bg-white bg-opacity-75 text-dark shadow-sm focus:ring-2 focus:ring-purple-500"
               placeholder="Password"
               required
             />
@@ -62,7 +62,7 @@ const LoginPage = () => {
 
           <button 
             type="submit" 
-            className="w-full bg-purple-500 text-white py-3 rounded-lg font-semibold hover:bg-purple-600 transition duration-300 shadow-md"
+            className="w-100 btn btn-purple py-3 rounded-3 font-semibold shadow-md hover:bg-purple-600 focus:outline-none"
           >
             Login
           </button>
@@ -72,7 +72,7 @@ const LoginPage = () => {
           Don't have an account?{" "}
           <button 
             onClick={() => navigate("/signup")}
-            className="text-purple-300 font-semibold hover:underline"
+            className="btn btn-link text-purple-300 font-semibold hover:underline"
           >
             Sign Up
           </button>
