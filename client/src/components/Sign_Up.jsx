@@ -1,29 +1,61 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaEnvelope, FaUser, FaHome, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaUser, FaMapPin, FaLock, FaGlobeAmericas } from "react-icons/fa";
+
+// List of Florida counties
+const floridaCounties = [
+  "Alachua", "Baker", "Bay", "Bradford", "Brevard", "Broward", "Calhoun", "Charlotte", "Citrus", "Clay",
+  "Collier", "Columbia", "DeSoto", "Dixie", "Duval", "Escambia", "Flagler", "Franklin", "Gadsden", "Gilchrist",
+  "Glades", "Gulf", "Hamilton", "Hardee", "Hendry", "Hernando", "Highlands", "Hillsborough", "Holmes", "Indian River",
+  "Jackson", "Jefferson", "Lafayette", "Lake", "Lee", "Leon", "Levy", "Liberty", "Madison", "Manatee", "Marion",
+  "Martin", "Miami-Dade", "Monroe", "Nassau", "Okaloosa", "Okeechobee", "Orange", "Osceola", "Palm Beach", "Pasco",
+  "Pinellas", "Polk", "Putnam", "Saint Johns", "Saint Lucie", "Santa Rosa", "Sarasota", "Seminole", "Sumter",
+  "Suwannee", "Taylor", "Union", "Volusia", "Wakulla", "Walton", "Washington"
+];
+
+// Function to validate ZIP code format
+const isValidZipCode = (zipcode) => {
+  const zipCodePattern = /^[3][2-4][0-9]{3}$/;
+  return zipCodePattern.test(zipcode);
+};
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [address, setAddress] = useState("");
-  const [password, setPassword] = useState(""); // Added password field
+  const [zipcode, setZip] = useState("");
+  const [county, setCounty] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate county
+    if (!floridaCounties.includes(county)) {
+      setError("Please enter a valid Florida county.");
+      return;
+    }
+
+    // Validate ZIP code
+    if (!isValidZipCode(zipcode)) {
+      setError("Please enter a valid Florida ZIP code.");
+      return;
+    }
+
     try {
       await axios.post("http://localhost:5000/api/auth/register", {
         email,
         firstName,
         lastName,
-        address,
-        password, // Send password to the backend
+        zipcode,
+        county,
+        password,
       });
 
-      navigate("/dashboard"); // Redirect to dashboard after successful signup
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Failed to create account. Please try again.");
     }
@@ -81,13 +113,25 @@ const SignUpPage = () => {
           </div>
 
           <div className="mb-4 position-relative">
-            <FaHome className="position-absolute top-50 translate-middle-y text-muted" style={{ left: '12px' }} />
+            <FaMapPin className="position-absolute top-50 translate-middle-y text-muted" style={{ left: '12px' }} />
             <input
               type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              value={zipcode}
+              onChange={(e) => setZip(e.target.value)}
               className="form-control ps-5 py-3 border-2 border-purple-500 rounded-3 bg-white bg-opacity-75 text-dark shadow-sm focus:ring-2 focus:ring-purple-500"
-              placeholder="Address"
+              placeholder="ZIP Code"
+              required
+            />
+          </div>
+
+          <div className="mb-4 position-relative">
+          <FaGlobeAmericas className="position-absolute top-50 translate-middle-y text-muted" style={{ left: '12px' }} />
+            <input
+              type="text"
+              value={county}
+              onChange={(e) => setCounty(e.target.value)}
+              className="form-control ps-5 py-3 border-2 border-purple-500 rounded-3 bg-white bg-opacity-75 text-dark shadow-sm focus:ring-2 focus:ring-purple-500"
+              placeholder="County"
               required
             />
           </div>
@@ -127,3 +171,4 @@ const SignUpPage = () => {
 };
 
 export default SignUpPage;
+
