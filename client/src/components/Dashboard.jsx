@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';  // Ensure useEffect is imported
 import { useNavigate } from "react-router-dom";
 import { FaCog } from 'react-icons/fa';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [zipCode, setZipCode] = useState("");
+  const [zipcode, setZipCode] = useState("");
   const [county, setCounty] = useState("");
   const [showSettings, setShowSettings] = useState(false);
 
@@ -15,17 +15,14 @@ const Dashboard = () => {
 
   const handleSettingsSubmit = (e) => {
     e.preventDefault();
-    //TODO
-    //Landon... send the updated zip code and county to the backend
-    //erase console.log replace with posts i think
-    console.log("Updated Zip Code:", zipCode);
+    console.log("Updated Zip Code:", zipcode);
     console.log("Updated County:", county);
     setShowSettings(false);
   };
 
   const handleZipCodeChange = (e) => {
     const value = e.target.value;
-    //Allow only numbers and limit to 5 digits
+    // Allow only numbers and limit to 5 digits
     if (/^\d{0,5}$/.test(value)) {
       setZipCode(value);
     }
@@ -44,12 +41,12 @@ const Dashboard = () => {
         <div className="settings-form mt-3">
           <form onSubmit={handleSettingsSubmit} className="text-left">
             <div className="form-group">
-              <label htmlFor="zipCode">Zip Code</label>
+              <label htmlFor="zipcode">Zip Code</label>
               <input
                 type="text"
                 className="form-control mx-auto"
-                id="zipCode"
-                value={zipCode}
+                id="zipcode"
+                value={zipcode}
                 onChange={handleZipCodeChange}
                 required
                 style={{ width: '200px' }} 
@@ -85,6 +82,16 @@ const Dashboard = () => {
           <p>60°F</p>
         </div>
       </div>
+      
+      {/* Button to navigate to WeatherMap */}
+      <button 
+        className="btn btn-info mt-3" 
+        onClick={() => navigate("/weather-map")}
+      >
+        Go to Weather Map
+      </button>
+
+      {/* Logout button */}
       <button className="btn btn-danger mt-3" onClick={handleLogout}>Logout</button>
     </div>
   );

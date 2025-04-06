@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-81.7602544, 27.9944024]
+      },
+      "properties": {
+        "name": "Florida",
+        "description": "A point in Florida"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-81.7602544, 27.9944024],
+            [-80.7602544, 27.9944024],
+            [-80.7602544, 28.9944024],
+            [-81.7602544, 28.9944024],
+            [-81.7602544, 27.9944024]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Florida Region",
+        "description": "A polygon covering a region in Florida
