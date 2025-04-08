@@ -7,7 +7,7 @@ const router = express.Router();
 
 // POST route for user registration
 router.post("/register", async (req, res) => {
-  const { email, firstName, lastName, address, password } = req.body;
+  const { email, firstName, lastName, zipcode, county, password } = req.body;
 
   try {
     // Check if user already exists
@@ -23,7 +23,8 @@ router.post("/register", async (req, res) => {
       email,
       firstName,
       lastName,
-      address,
+      zipcode, 
+      county,
       password: hashedPassword,
     });
 
