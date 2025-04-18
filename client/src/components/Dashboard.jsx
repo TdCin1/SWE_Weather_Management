@@ -366,6 +366,9 @@ const Dashboard = () => {
           <button className="btn btn-danger" onClick={handleLogout}>
             Logout
           </button>
+           <button className="btn btn-info" onClick={() => navigate("/recommendation")}>
+            Recommendations
+          </button>
         </div>
       </div>
     </div>
