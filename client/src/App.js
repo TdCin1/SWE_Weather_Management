@@ -5,7 +5,6 @@ import Dashboard from "./components/Dashboard";
 import Sign_Up from "./components/Sign_Up";
 import WeatherMap from "./components/Weather_Map";  // Import WeatherMap component
 import Recommendation_Page from "./components/Recommendation_Page"; // Import recommendation page 
-
 const App = () => {
   return (
     <Router>

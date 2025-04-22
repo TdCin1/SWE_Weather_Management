@@ -25,11 +25,14 @@ const LoginPage = () => {
     <div style={{
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       minHeight: "100vh",
       background: "linear-gradient(to bottom right, #8b5cf6, #4f46e5)",
-      padding: "1.5rem"
+      padding: "1.5rem",
+      flexDirection: "column"
     }}>
+      <img src="/WeatherLogo.png" alt="Logo" style={{ display: 'block', margin: '0 auto 20px auto', height: '300px' }} />
+      <h1 className="text-4xl font-extrabold text-center text-black mb-28">Sunshine Storm Tracker</h1>
       <div className="bg-white bg-opacity-50 backdrop-blur-lg p-6 rounded-4 shadow-lg w-100" style={{ maxWidth: '400px' }}>
         <h2 className="text-3xl font-bold text-center text-white mb-4">Welcome Back</h2>
 
