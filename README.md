@@ -2,11 +2,7 @@
 A full-stack weather management dashboard built with the MERN stack (MongoDB, Express.js, React, Node.js). This application allows users to view and manage weather data for different locations.
 
 # 📦 Project Structure
-SWE_Weather_Management/
-  ├── client/    # React frontend
-  ├── server/    # Node.js + Express backend
-  ├── .gitignore
-  └── README.md
+SWE_Weather_Management/client/    # React frontend /server/    # Node.js + Express backend
 
 # 🚀 Setup Instructions
 Clone this repository:
